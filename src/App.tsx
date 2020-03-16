@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC, useState, createContext } from 'react'
+import { HashRouter, Route, Switch } from 'react-router-dom'
+import LoginContainar from '@/containars/LoginContainar'
+import DetailContainar from '@/containars/DetailContainar'
 
-function App() {
+export const UserContext = createContext({} as any)
+
+const App: FC = () => {
+  const [user, setUser] = useState({ username: '', password: ''})
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <HashRouter>
+        <Switch>
+          <Route exact path="/login/" component={LoginContainar} />
+          <Route exact path="/detail/:id" component={DetailContainar} />
+        </Switch>
+      </HashRouter>
+    </>
+  )
 }
 
-export default App;
+export default App

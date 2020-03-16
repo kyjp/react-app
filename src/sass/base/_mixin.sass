@@ -1,0 +1,23 @@
+$scrollbar: 20px
+$tb: 960px
+$sp: 560px
+
+=mq($point)
+  @if if $point == min-tb
+    @media print, screen and (min-width: $tb + 1)
+      @content
+  @else if $point == max-tb
+    @media print, screen and (max-width: $tb + 1)
+      @content
+  @else if $point == tb
+    @media only screen and (min-width: $sp + 1) and (max-width: $tb + 1)
+      @content
+  @else if $point == min-sp
+    @media print, screen and (min-width: $sp + 1)
+      @content
+  @else if $point == max-sp
+    @media print, screen and (max-width: $sp + 1)
+      @content
+  @else if $point == print
+    @media print
+      @content
